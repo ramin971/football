@@ -134,7 +134,7 @@ ul li a {
   position: relative;
   display: block;
   width: 70px;
-  height: 70px;
+  height: 76px;
   background: #fff;
   text-align: center;
   transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(0,0);
