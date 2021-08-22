@@ -5,16 +5,20 @@ from django.utils import timezone
 
 
 class Article(models.Model):
-    STATUS_CHOICES=(('d', 'Draft'), ('p', 'Publish'),)
+    STATUS_CHOICES=(('d', 'پیشنویس'), ('p', 'انتشار'),)
 
-    title=models.CharField(max_length=200)
-    slug=models.SlugField(max_length=100,unique=True)
-    description=models.TextField()
-    thumbnail=models.ImageField(upload_to='images')
-    created=models.DateTimeField(auto_now_add=True)
-    publish=models.DateTimeField(default=timezone.now)
-    updated=models.DateTimeField(auto_now=True)
-    status=models.CharField(max_length=1,choices=STATUS_CHOICES)
+    title=models.CharField(max_length=200,verbose_name='عنوان')
+    slug=models.SlugField(max_length=100,unique=True,verbose_name='آدرس url')
+    description=models.TextField(verbose_name='توضیحات')
+    thumbnail=models.ImageField(upload_to='images',verbose_name='تصویر')
+    created=models.DateTimeField(auto_now_add=True,verbose_name='زمان ایجاد')
+    publish=models.DateTimeField(default=timezone.now,verbose_name='زمان انتشار')
+    updated=models.DateTimeField(auto_now=True,verbose_name='زمان بروزرسانی')
+    status=models.CharField(max_length=1,choices=STATUS_CHOICES,verbose_name='وضعیت')
+
+    class Meta:
+        verbose_name='مقاله'
+        verbose_name_plural='مقالات'
 
     def __str__(self):
         return self.title

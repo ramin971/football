@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>resume</title>
     {% load static %}
+    {% load jalali_tags %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'news/css/style.css' %}">
 
@@ -40,9 +41,9 @@
               <b><a href="{% url 'news:detail' article.slug %}">{{ article.title }}</a></b>
               <br>
               <br>
-              <p>{{ article.description }}</p>
+              <p>{{ article.description |truncatewords:30 }}</p>
               <br>
-              <p>{{ article.publish }}</p>
+              <p style="text-align: left">زمان انتشار: {{article.publish|to_jalali:'%y/%m/%d _ ساعت: %H:%M:%S' }}</p>
               <br>
           {% endfor %}
          <br>
